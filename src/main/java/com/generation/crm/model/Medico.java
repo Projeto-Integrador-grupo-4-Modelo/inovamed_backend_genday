@@ -4,9 +4,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "tb_medicos")
-public class Medico {
+public class Medico implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +25,9 @@ public class Medico {
     private String crm;
 
     private boolean deleted = false;
+
+    public Medico() {
+    }
 
     public void update(Medico medico) {
         if (medico.nome != null && !medico.nome.isBlank()) {

@@ -1,17 +1,11 @@
 package com.generation.crm.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_consultas")
@@ -28,7 +22,7 @@ public class Consulta {
     private String queixa;
 
     @NotNull
-    private LocalDate data;
+    private LocalDateTime dataHora;
 
     @NotBlank
     private String medicoResponsavel;
@@ -78,12 +72,13 @@ public class Consulta {
         this.queixa = queixa;
     }
 
-    public LocalDate getData() {
-        return data;
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 
     public String getMedicoResponsavel() {
