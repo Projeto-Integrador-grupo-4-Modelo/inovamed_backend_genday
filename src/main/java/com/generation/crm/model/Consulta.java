@@ -30,6 +30,9 @@ public class Consulta {
     @NotBlank
     private String status;
 
+    @NotBlank
+    private String statusPagamento;
+
     private boolean deleted = false;
 
     @ManyToOne
@@ -105,4 +108,11 @@ public class Consulta {
         this.cliente = cliente;
     }
 
+    public String getStatusPagamento() {
+        return statusPagamento;
+    }
+
+    public void setStatusPagamento(String statusPagamento) {
+        this.statusPagamento = statusPagamento;
+    }
 }
