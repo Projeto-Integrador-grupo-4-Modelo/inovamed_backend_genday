@@ -24,8 +24,10 @@ public class Consulta {
     @NotNull
     private LocalDateTime dataHora;
 
-    @NotBlank
-    private String medicoResponsavel;
+    @ManyToOne
+    @NotNull
+    @JsonIgnoreProperties("consulta")
+    private Medico medico;
 
     @NotBlank
     private String status;
@@ -36,6 +38,7 @@ public class Consulta {
     private boolean deleted = false;
 
     @ManyToOne
+    @NotNull
     @JsonIgnoreProperties("consulta")
     private Paciente cliente;
 
@@ -84,14 +87,6 @@ public class Consulta {
         this.dataHora = dataHora;
     }
 
-    public String getMedicoResponsavel() {
-        return medicoResponsavel;
-    }
-
-    public void setMedicoResponsavel(String medicoResponsavel) {
-        this.medicoResponsavel = medicoResponsavel;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -114,5 +109,13 @@ public class Consulta {
 
     public void setStatusPagamento(String statusPagamento) {
         this.statusPagamento = statusPagamento;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 }

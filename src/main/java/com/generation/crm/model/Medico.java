@@ -1,10 +1,12 @@
 package com.generation.crm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_medicos")
@@ -23,6 +25,10 @@ public class Medico implements Serializable {
     @NotBlank
     @Pattern(regexp = "\\d{4,6}/[A-Z]{2}", message = "CRM deve seguir o formato NNNNNN/UF")
     private String crm;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "medico", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("medico")
+    private List<Consulta> consulta;
 
     private boolean deleted = false;
 
