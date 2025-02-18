@@ -40,7 +40,7 @@ public class Consulta {
     @ManyToOne
     @NotNull
     @JsonIgnoreProperties("consulta")
-    private Paciente cliente;
+    private Paciente paciente;
 
     @ManyToOne
     @JsonIgnoreProperties("consulta")
@@ -95,12 +95,12 @@ public class Consulta {
         this.status = status;
     }
 
-    public Paciente getCliente() {
-        return cliente;
+    public Paciente getPaciente() {
+        return paciente;
     }
 
-    public void setCliente(Paciente cliente) {
-        this.cliente = cliente;
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public String getStatusPagamento() {
