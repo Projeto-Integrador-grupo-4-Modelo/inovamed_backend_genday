@@ -27,7 +27,7 @@ public class Medico implements Serializable {
     @Pattern(regexp = "\\d{4,6}/[A-Z]{2}", message = "CRM deve seguir o formato NNNNNN/UF")
     private String crm;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "medico", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "medico", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("medico")
     private List<Consulta> consulta;
 
@@ -80,5 +80,12 @@ public class Medico implements Serializable {
         this.crm = crm;
     }
 
+    public List<Consulta> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(List<Consulta> consulta) {
+        this.consulta = consulta;
+    }
 
 }
