@@ -74,18 +74,18 @@ public class PacienteController {
 
     @Operation(summary = "Cadastra Paciente", tags = {"Pacientes"}, description = "Cadastra um paciente com seus dados")
     @PostMapping
-    public ResponseEntity<Paciente> post(@Valid @RequestBody Paciente cliente) {
-        if (!pacienteRepository.existsByCpf(cliente.getCpf())) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(pacienteRepository.save(cliente));
+    public ResponseEntity<Paciente> post(@Valid @RequestBody Paciente paciente) {
+        if (!pacienteRepository.existsByCpf(paciente.getCpf())) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(pacienteRepository.save(paciente));
         }
         throw new ConstraintViolationException("Este CPF já existe!", null);
     }
 
     @Operation(summary = "Atualiza Paciente", tags = {"Pacientes"}, description = "Atualiza um paciente e seus dados")
     @PutMapping
-    public ResponseEntity<Paciente> put(@Valid @RequestBody Paciente cliente) {
-        return pacienteRepository.findByIdLogic(cliente.getId())
-                .map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(pacienteRepository.save(cliente)))
+    public ResponseEntity<Paciente> put(@Valid @RequestBody Paciente paciente) {
+        return pacienteRepository.findByIdLogic(paciente.getId())
+                .map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(pacienteRepository.save(paciente)))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 

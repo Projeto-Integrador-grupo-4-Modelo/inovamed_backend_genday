@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_clientes")
+@Table(name = "tb_paciente")
 public class Paciente implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

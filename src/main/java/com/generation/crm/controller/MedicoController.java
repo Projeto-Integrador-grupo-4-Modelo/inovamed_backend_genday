@@ -47,6 +47,13 @@ public class MedicoController {
         return ResponseEntity.ok(medico);
     }
 
+    @Operation(summary = "encontre um médico pela sua especialidade", tags = {"Médicos"}, description = "Busque um médico pela sua especialidade enviada como parametro")
+    @GetMapping("especialidade/{especialidade}")
+    public ResponseEntity<List<Medico>> getByEspecialidade(@PathVariable String especialidade) {
+        List<Medico> medico = service.getMedicosPorEspecialidade(especialidade);
+        return ResponseEntity.ok(medico);
+    }
+
     @Operation(summary = "Atualiza um médico", tags = {"Médicos"}, description = "Atualize um médico enviando seu id como parametro")
     @PutMapping("/{id}")
     @CacheEvict(value = "medicos", allEntries = true)
