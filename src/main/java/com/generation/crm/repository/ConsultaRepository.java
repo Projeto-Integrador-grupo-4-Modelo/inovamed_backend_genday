@@ -18,12 +18,12 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE tb_consultas SET deleted = TRUE WHERE cliente_id=:id", nativeQuery = true)
+    @Query(value = "UPDATE tb_consultas SET deleted = TRUE WHERE paciente_id=:id", nativeQuery = true)
     void deleteLogicFromUser(Long id);
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE tb_consultas SET deleted = FALSE WHERE cliente_id=:id", nativeQuery = true)
+    @Query(value = "UPDATE tb_consultas SET deleted = FALSE WHERE paciente_id=:id", nativeQuery = true)
     void restoreFromUser(Long id);
 
     @Query(value = "SELECT * FROM tb_consultas WHERE deleted = FALSE", nativeQuery = true)
@@ -39,7 +39,7 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE tb_clientes SET deleted = FALSE WHERE id=:id", nativeQuery = true)
+    @Query(value = "UPDATE tb_paciente SET deleted = FALSE WHERE id=:id", nativeQuery = true)
     void restore(Long id);
 
 

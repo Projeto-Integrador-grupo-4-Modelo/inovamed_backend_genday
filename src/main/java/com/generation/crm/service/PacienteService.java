@@ -13,12 +13,12 @@ import java.util.NoSuchElementException;
 	public class PacienteService {
 
 	    @Autowired
-	    private PacienteRepository clienteRepository;
+	    private PacienteRepository pacienteRepository;
 
-	    public Paciente verificarConvenio(Long clienteId) {
+	    public Paciente verificarConvenio(Long pacienteId) {
 
-	        return clienteRepository.verificarConvenio(clienteId)
-	                .orElseThrow(() -> new NoSuchElementException("Cliente não encontrado"));
+	        return pacienteRepository.verificarConvenio(pacienteId)
+	                .orElseThrow(() -> new NoSuchElementException("Paciente não encontrado"));
 
 
 	    }

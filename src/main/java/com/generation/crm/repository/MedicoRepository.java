@@ -4,6 +4,7 @@ import com.generation.crm.model.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,6 +16,9 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
     @Query(value = "SELECT * FROM tb_medicos WHERE deleted = FALSE AND id = :id", nativeQuery = true)
     Optional<Medico> findByIdLogic(Long id);
+
+    @Query(value = "SELECT * FROM tb_medicos WHERE deleted = FALSE AND LOWER(especialidade) = LOWER(:especialidade)", nativeQuery = true)
+    List<Medico> findByEspecialidadeIgnoreCaseLogic(@Param("especialidade") String especialidade);
 
     @Modifying
     @Transactional
